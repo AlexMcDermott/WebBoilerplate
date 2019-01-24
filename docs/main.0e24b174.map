@@ -1,0 +1,1 @@
+{"version":3,"sources":["ts/main.ts"],"names":[],"mappings":";AAAI,OAAO,KACT,OAAO,IAAI,QAAQ,WACjB,OAAO,SAAS","file":"main.0e24b174.map","sourceRoot":"../src","sourcesContent":["if (module.hot) {\n  module.hot.dispose(() => {\n    window.location.reload();\n  });\n}\n"]}

@@ -1,0 +1,27 @@
+{
+  "name": "typescriptboilerplate",
+  "description": "Typescript boilerplate with TSLint, Prettier and Parcel",
+  "scripts": {
+    "lint": "tslint --fix ./src/ts/**",
+    "pretty": "prettier --write --config .prettierrc.json './**/*'",
+    "start": "rimraf docs && parcel --open --no-content-hash src/index.html",
+    "build": "rimraf docs && parcel build -d docs --no-content-hash src/index.html",
+    "stage-all": "git reset && git add -A"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run pretty && npm run build && npm run stage-all"
+    }
+  },
+  "author": "Alex McDermott",
+  "license": "ISC",
+  "devDependencies": {
+    "husky": "^1.3.1",
+    "parcel-bundler": "^1.11.0",
+    "prettier": "^1.15.3",
+    "rimraf": "^2.6.3",
+    "tslint": "^5.12.1",
+    "tslint-config-prettier": "^1.17.0",
+    "typescript": "^3.2.2"
+  }
+}

@@ -1,0 +1,5 @@
+.cache
+.gitignore
+.prettierignore
+docs
+node_modules
