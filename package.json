@@ -4,7 +4,7 @@
   "scripts": {
     "lint": "tslint --fix ./src/ts/**",
     "pretty": "prettier --write --config .prettierrc.json './**/*'",
-    "start": "rimraf docs && parcel --open --no-content-hash src/index.html",
+    "start": "rimraf docs && parcel --open -d docs src/index.html",
     "build": "rimraf docs && parcel build -d docs --no-content-hash src/index.html",
     "stage-all": "git reset && git add -A"
   },
