@@ -1,6 +1,7 @@
 {
   "name": "typescriptboilerplate",
   "description": "Typescript boilerplate with TSLint, Prettier and Parcel",
+  "private": true,
   "scripts": {
     "lint": "tslint --fix ./src/ts/**",
     "pretty": "prettier --write --config .prettierrc.json './**/*'",
