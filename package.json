@@ -3,10 +3,12 @@
   "description": "Typescript boilerplate with TSLint, Prettier and Parcel",
   "private": true,
   "scripts": {
-    "lint": "tslint --fix ./src/ts/**",
+    "lint-ts": "tslint --fix ./src/ts/**",
+    "lint-md": "markdownlint --ignore node_modules .",
+    "lint": "npm run lint-ts && npm run lint-md",
     "pretty": "prettier --write --config .prettierrc.json './**/*'",
     "start": "rimraf docs && parcel --open -d docs src/index.html",
-    "build": "rimraf docs && parcel build -d docs --no-content-hash src/index.html",
+    "build": "rimraf docs && parcel build -d docs src/index.html",
     "stage-all": "git reset && git add -A"
   },
   "husky": {
@@ -18,6 +20,7 @@
   "license": "ISC",
   "devDependencies": {
     "husky": "^1.3.1",
+    "markdownlint-cli": "^0.13.0",
     "parcel-bundler": "^1.11.0",
     "prettier": "^1.15.3",
     "rimraf": "^2.6.3",
