@@ -3,3 +3,13 @@ if (module.hot) {
     window.location.reload();
   });
 }
+
+import Canvas from './canvas';
+
+const canvas = new Canvas();
+
+function draw() {
+  canvas.background('#ffffff');
+}
+
+canvas.start(draw);
