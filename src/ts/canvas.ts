@@ -94,6 +94,12 @@ export default class Canvas {
     this.ctx.fill();
   }
 
+  public circle(x: number, y: number, r: number) {
+    this.ctx.beginPath();
+    this.ctx.arc(x, y, r, 0, 2 * Math.PI);
+    this.ctx.fill();
+  }
+
   private push() {
     this.style = {
       fillStyle: this.ctx.fillStyle,
