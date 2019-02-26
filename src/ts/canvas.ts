@@ -1,5 +1,6 @@
 type CanvasColour = string | CanvasGradient | CanvasPattern;
 type RGB = [number, number, number];
+type pixelOperation = [number, number];
 
 interface ICanvasStyle {
   fillStyle: CanvasColour;
@@ -11,6 +12,7 @@ interface ICanvasStyle {
 export default class Canvas {
   private ctx: CanvasRenderingContext2D;
   private style: ICanvasStyle;
+  private pixelOperations: pixelOperation[] = [];
 
   constructor(width = window.innerWidth, height = window.innerHeight) {
     this.createCanvas(width, height);
@@ -25,8 +27,16 @@ export default class Canvas {
   }
 
   get fillColour() {
-    const fillColour = this.ctx.fillStyle;
-    return [fillColour[4], fillColour[7], fillColour[10]];
+    const hex = this.ctx.fillStyle;
+    if (typeof hex === 'string') {
+      const r = parseInt(hex.substring(1, 3), 16);
+      const g = parseInt(hex.substring(3, 5), 16);
+      const b = parseInt(hex.substring(5), 16);
+      return [r, g, b];
+    }
+    throw new Error(
+      'CanvasGradient or CanvasPattern colour types are not supported.'
+    );
   }
 
   set fillColour(rgb: RGB) {
@@ -44,9 +54,18 @@ export default class Canvas {
 
   public start(draw: () => void) {
     draw();
+    this.updatePixels();
     requestAnimationFrame(() => {
       this.start(draw);
     });
+  }
+
+  public set(x: number, y: number) {
+    const rgb = this.fillColour;
+    const index = y * this.width * 4 + x * 4;
+    this.pixelOperations.push([index, rgb[0]]);
+    this.pixelOperations.push([index + 1, rgb[1]]);
+    this.pixelOperations.push([index + 2, rgb[2]]);
   }
 
   public background(colour: RGB) {
@@ -71,7 +90,7 @@ export default class Canvas {
 
   public rect(x: number, y: number, w: number, h: number) {
     this.ctx.beginPath();
-    this.ctx.rect(x, y, x + w, y + h);
+    this.ctx.rect(x, y, w, h);
     this.ctx.fill();
   }
 
@@ -89,6 +108,17 @@ export default class Canvas {
     this.ctx.font = this.style.font;
     this.ctx.lineWidth = this.style.lineWidth;
     this.ctx.strokeStyle = this.style.strokeStyle;
+  }
+
+  private updatePixels() {
+    const image = this.ctx.getImageData(0, 0, this.width, this.height);
+    const pixels = image.data;
+    for (const operation of this.pixelOperations) {
+      const index = operation[0];
+      const value = operation[1];
+      pixels[index] = value;
+    }
+    this.ctx.putImageData(image, 0, 0);
   }
 
   private createCanvas(width: number, height: number) {
