@@ -105,7 +105,7 @@ export default class Canvas {
       fillStyle: this.ctx.fillStyle,
       font: this.ctx.font,
       lineWidth: this.ctx.lineWidth,
-      strokeStyle: this.ctx.strokeStyle
+      strokeStyle: this.ctx.strokeStyle,
     };
   }
 
