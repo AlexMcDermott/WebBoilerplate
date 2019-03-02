@@ -9,7 +9,8 @@
     "pretty": "prettier --write --config .prettierrc.json './**/*'",
     "start": "rimraf docs && parcel --open -d docs src/index.html",
     "build": "rimraf docs && parcel build -d docs src/index.html",
-    "stage-all": "git reset && git add -A"
+    "stage-all": "git reset && git add -A",
+    "force-commit": "git commit --no-verify -m"
   },
   "husky": {
     "hooks": {
