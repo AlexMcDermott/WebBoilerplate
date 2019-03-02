@@ -1,4 +1,5 @@
 .cache
+.editorconfig
 .gitignore
 .prettierignore
 docs
