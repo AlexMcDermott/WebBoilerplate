@@ -7,19 +7,22 @@
     "lint-md": "markdownlint --ignore node_modules .",
     "lint": "npm run lint-ts && npm run lint-md",
     "pretty": "prettier --write --config .prettierrc.json './**/*'",
-    "start": "rimraf docs && parcel --open -d docs src/index.html",
-    "build": "rimraf docs && parcel build -d docs src/index.html",
-    "stage-all": "git reset && git add -A"
+    "start": "npm run cleanup && parcel ./src/index.html --open",
+    "build": "npm run cleanup && parcel build src/index.html",
+    "deploy": "gh-pages --no-push -d dist",
+    "cleanup": "rimraf dist"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint && npm run pretty && npm run build && npm run stage-all"
+      "pre-commit": "npm run lint && npm run pretty",
+      "post-commit": "npm run build && npm run deploy && npm run cleanup"
     }
   },
   "author": "Alex McDermott",
   "license": "ISC",
   "devDependencies": {
     "@types/parcel-env": "0.0.0",
+    "gh-pages": "^2.0.1",
     "husky": "^1.3.1",
     "markdownlint-cli": "^0.13.0",
     "parcel-bundler": "^1.11.0",

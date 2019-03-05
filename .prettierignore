@@ -1,5 +1,6 @@
 .cache
+.DS_Store
 .gitignore
 .prettierignore
-docs
+dist
 node_modules
