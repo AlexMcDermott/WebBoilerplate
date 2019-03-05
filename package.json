@@ -15,7 +15,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint && npm run pretty",
-      "post-commit": "npm run build && npm run deploy && npm run cleanup"
+      "post-commit": "npm run build && npm run deploy"
     }
   },
   "author": "Alex McDermott",
