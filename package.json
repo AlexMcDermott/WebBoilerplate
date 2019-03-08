@@ -8,7 +8,7 @@
     "lint": "npm run lint-ts && npm run lint-md",
     "pretty": "prettier --write --config .prettierrc.json '**/*'",
     "start": "npm run cleanup && parcel src/index.html --open",
-    "build": "npm run cleanup && parcel build src/index.html",
+    "build": "npm run cleanup && parcel build --public-url $(basename $(git rev-parse --show-toplevel)) src/index.html",
     "deploy": "gh-pages -d dist",
     "cleanup": "rimraf dist node_modules/gh-pages/.cache"
   },
