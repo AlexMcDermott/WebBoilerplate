@@ -15,4 +15,9 @@ Boilerplate for TypeScript canvas projects.
 ## Bundling
 
 - [Parcel](https://github.com/parcel-bundler/parcel) live-reload server runs on `npm start`
-- Builds to docs folder on pre-commit to use with GitHub Pages
+- Builds to dist folder for use with gh-pages
+
+## Deploying
+
+- Uses [gh-pages](https://github.com/tschaub/gh-pages) to automatically deploy to Github Pages
+- Deploys dist folder to gh-pages branch on pre-push
