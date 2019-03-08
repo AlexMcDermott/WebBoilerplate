@@ -3,19 +3,19 @@
   "description": "Typescript boilerplate with TSLint, Prettier and Parcel",
   "private": true,
   "scripts": {
-    "lint-ts": "tslint --fix ./src/ts/**",
+    "lint-ts": "tslint --fix src/ts/**",
     "lint-md": "markdownlint --ignore node_modules .",
     "lint": "npm run lint-ts && npm run lint-md",
-    "pretty": "prettier --write --config .prettierrc.json './**/*'",
-    "start": "npm run cleanup && parcel ./src/index.html --open",
+    "pretty": "prettier --write --config .prettierrc.json '**/*'",
+    "start": "npm run cleanup && parcel src/index.html --open",
     "build": "npm run cleanup && parcel build src/index.html",
-    "deploy": "gh-pages --no-push -d dist",
-    "cleanup": "rimraf dist"
+    "deploy": "gh-pages -d dist",
+    "cleanup": "rimraf dist node_modules/gh-pages/.cache"
   },
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint && npm run pretty",
-      "post-commit": "npm run build && npm run deploy"
+      "pre-push": "npm run build && npm run deploy"
     }
   },
   "author": "Alex McDermott",
