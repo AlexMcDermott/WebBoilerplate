@@ -10,11 +10,12 @@
     "start": "npm run cleanup && parcel src/index.html --open",
     "build": "npm run cleanup && parcel build --public-url /$(basename $(git rev-parse --show-toplevel))/ src/index.html",
     "deploy": "gh-pages -d dist",
-    "cleanup": "rimraf dist node_modules/gh-pages/.cache"
+    "cleanup": "rimraf dist node_modules/gh-pages/.cache",
+    "set-title": "echo title: $(basename $(git rev-parse --show-toplevel)) > _config.yml"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint && npm run pretty",
+      "pre-commit": "npm run set-title && npm run lint && npm run pretty",
       "pre-push": "npm run build && npm run deploy"
     }
   },
