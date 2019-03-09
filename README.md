@@ -19,5 +19,5 @@ Boilerplate for TypeScript canvas projects.
 
 ## Deploying
 
-- Uses [gh-pages](https://github.com/tschaub/gh-pages) to automatically deploy to Github Pages
-- Deploys dist folder to gh-pages branch on pre-push
+- Uses [gh-pages](https://github.com/tschaub/gh-pages) to automatically deploy dist folder to gh-pages branch
+- Uses [git-branch-is](https://github.com/kevinoid/git-branch-is) to only deploy when pushing to the master branch
