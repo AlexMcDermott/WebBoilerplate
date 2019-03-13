@@ -13,6 +13,7 @@ export default class Canvas {
   private ctx: CanvasRenderingContext2D;
   private style: ICanvasStyle;
   private pixelOperations: pixelOperation[] = [];
+  private loop = true;
 
   constructor(width = window.innerWidth, height = window.innerHeight) {
     this.createCanvas(width, height);
@@ -53,11 +54,17 @@ export default class Canvas {
   }
 
   public start(draw: () => void) {
-    draw();
-    this.updatePixels();
-    requestAnimationFrame(() => {
-      this.start(draw);
-    });
+    if (this.loop) {
+      draw();
+      this.updatePixels();
+      requestAnimationFrame(() => {
+        this.start(draw);
+      });
+    }
+  }
+
+  public noLoop() {
+    this.loop = false;
   }
 
   public set(x: number, y: number) {
