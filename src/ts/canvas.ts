@@ -14,6 +14,7 @@ export default class Canvas {
   private style: ICanvasStyle;
   private pixelOperations: pixelOperation[] = [];
   private loop = true;
+  private framerate = 0;
 
   constructor(width = window.innerWidth, height = window.innerHeight) {
     this.createCanvas(width, height);
@@ -25,6 +26,10 @@ export default class Canvas {
 
   get height() {
     return this.ctx.canvas.height;
+  }
+
+  get fps() {
+    return this.framerate;
   }
 
   get fillColour() {
@@ -55,8 +60,11 @@ export default class Canvas {
 
   public start(draw: () => void) {
     if (this.loop) {
+      const start = performance.now();
       draw();
       this.updatePixels();
+      const end = performance.now();
+      this.framerate = 1 / ((end - start) / 1000);
       requestAnimationFrame(() => {
         this.start(draw);
       });
