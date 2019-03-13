@@ -75,12 +75,6 @@ export default class Canvas {
     this.pop();
   }
 
-  public point(x: number, y: number, r: number) {
-    this.ctx.beginPath();
-    this.ctx.arc(x, y, r, 0, 2 * Math.PI);
-    this.ctx.fill();
-  }
-
   public line(x1: number, y1: number, x2: number, y2: number) {
     this.ctx.beginPath();
     this.ctx.moveTo(x1, y1);
