@@ -1,9 +1,9 @@
 import Canvas from './canvas';
 
-const canvas = new Canvas();
+const cnv = new Canvas();
 
 function draw() {
-  canvas.background([255, 255, 255]);
+  cnv.background([255, 255, 255]);
 }
 
-canvas.start(draw);
+cnv.start(draw);
