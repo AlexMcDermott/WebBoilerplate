@@ -41,7 +41,7 @@ export default class Canvas {
   }
 
   public set(x: number, y: number) {
-    if (this.image == null) {
+    if (this.image === null) {
       this.image = this.ctx.getImageData(0, 0, this.width, this.height);
     }
     const rgb = this.getColour();
@@ -52,7 +52,7 @@ export default class Canvas {
   }
 
   public updatePixels() {
-    if (this.image != null) {
+    if (this.image !== null) {
       this.ctx.putImageData(this.image, 0, 0);
       this.image = null;
     }
@@ -60,9 +60,9 @@ export default class Canvas {
 
   public setFont(
     size: number,
-    font: string,
-    vAlign: CanvasTextAlign,
-    hAlign: CanvasTextBaseline
+    font = 'serif',
+    vAlign: CanvasTextAlign = 'center',
+    hAlign: CanvasTextBaseline = 'middle'
   ) {
     this.ctx.font = `${size}px ${font}`;
     this.ctx.textAlign = vAlign;
@@ -74,7 +74,7 @@ export default class Canvas {
   }
 
   public showFramerate() {
-    if (this.framerate != null) {
+    if (this.framerate !== null) {
       this.setColour([255, 255, 255]);
       this.rect(0, 0, 35, 20);
       this.setColour([0, 0, 0]);
@@ -97,15 +97,15 @@ export default class Canvas {
     this.ctx.stroke();
   }
 
-  public rect(x: number, y: number, w: number, h: number) {
+  public rect(x: number, y: number, w: number, h = w) {
     this.ctx.beginPath();
     this.ctx.rect(x, y, w, h);
     this.ctx.fill();
   }
 
-  public circle(x: number, y: number, r: number) {
+  public circle(x: number, y: number, r: number, a1 = 0, a2 = 2 * Math.PI) {
     this.ctx.beginPath();
-    this.ctx.arc(x, y, r, 0, 2 * Math.PI);
+    this.ctx.arc(x, y, r, a1, a2);
     this.ctx.fill();
   }
 
