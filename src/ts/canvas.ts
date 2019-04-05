@@ -3,13 +3,21 @@ type RGB = [number, number, number];
 export default class Canvas {
   public width: number;
   public height: number;
+  public pixelScaledWidth: number;
+  public pixelScaledHeight: number;
   public framerate: string = null;
   private ctx: CanvasRenderingContext2D;
   private image: ImageData = null;
   private loop = true;
+  private pixelScale = 1;
 
   constructor(width = window.innerWidth, height = window.innerHeight) {
     this.createCanvas(width, height);
+    this.width = this.ctx.canvas.width;
+    this.height = this.ctx.canvas.height;
+    this.pixelScaledWidth = width;
+    this.pixelScaledHeight = height;
+    this.background([255, 255, 255]);
   }
 
   public start(draw: () => void) {
@@ -40,15 +48,25 @@ export default class Canvas {
     this.ctx.strokeStyle = `rgb(${colour[0]}, ${colour[1]}, ${colour[2]})`;
   }
 
+  public setPixelScale(scl: number) {
+    this.pixelScale = scl;
+    this.pixelScaledWidth = Math.round(this.width / this.pixelScale);
+    this.pixelScaledHeight = Math.round(this.height / this.pixelScale);
+  }
+
   public set(x: number, y: number) {
     if (this.image === null) {
       this.image = this.ctx.getImageData(0, 0, this.width, this.height);
     }
-    const rgb = this.getColour();
-    const index = y * 4 * this.width + x * 4;
-    this.image.data[index] = rgb[0];
-    this.image.data[index + 1] = rgb[1];
-    this.image.data[index + 2] = rgb[2];
+    if (this.pixelScale === 1) {
+      const rgb = this.getColour();
+      const index = y * 4 * this.width + x * 4;
+      this.image.data[index] = rgb[0];
+      this.image.data[index + 1] = rgb[1];
+      this.image.data[index + 2] = rgb[2];
+    } else {
+      this.rect(x * this.pixelScale, y * this.pixelScale, this.pixelScale);
+    }
   }
 
   public updatePixels() {
@@ -111,11 +129,10 @@ export default class Canvas {
 
   private createCanvas(width: number, height: number) {
     const canvas = document.createElement('canvas');
-    this.width = canvas.width = width;
-    this.height = canvas.height = height;
-    this.ctx = canvas.getContext('2d');
+    canvas.width = width;
+    canvas.height = height;
     document.body.appendChild(canvas);
-    this.background([255, 255, 255]);
+    this.ctx = canvas.getContext('2d');
   }
 
   private calcFramerate(draw: () => void) {
