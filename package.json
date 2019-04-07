@@ -1,6 +1,4 @@
 {
-  "name": "typescriptboilerplate",
-  "description": "Typescript boilerplate with TSLint, Prettier and Parcel",
   "private": true,
   "scripts": {
     "lint-ts": "tslint --fix src/ts/**",
@@ -10,7 +8,10 @@
     "start": "npm run cleanup && parcel src/index.html --open",
     "build": "npm run cleanup && parcel build --public-url /$(basename $(git rev-parse --show-toplevel))/ src/index.html",
     "deploy": "gh-pages -d dist",
-    "cleanup": "rimraf dist node_modules/gh-pages/.cache"
+    "cleanup": "rimraf dist node_modules/gh-pages/.cache",
+    "git-wipe": "npx rimraf .git",
+    "git-init": "git init && git add . && git commit -m 'Initial commit'",
+    "setup": "npm run git-wipe && > README.md && npm install && npm run git-init"
   },
   "husky": {
     "hooks": {
