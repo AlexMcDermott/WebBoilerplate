@@ -5,18 +5,17 @@
     "lint-md": "markdownlint --ignore node_modules .",
     "lint": "npm run lint-ts && npm run lint-md",
     "pretty": "prettier --write --config .prettierrc.json '**/*'",
-    "start": "npm run cleanup && parcel src/index.html --open",
-    "build": "npm run cleanup && parcel build --public-url /$(basename $(git rev-parse --show-toplevel))/ src/index.html",
-    "deploy": "gh-pages -d dist",
-    "cleanup": "rimraf dist node_modules/gh-pages/.cache",
-    "git-wipe": "npx rimraf .git",
-    "git-init": "git init && git add . && git commit -m 'Initial commit'",
-    "setup": "npm run git-wipe && > README.md && npm run git-init && npm install"
+    "start": "trap 'exit 0' SIGINT ; parcel src/index.html --open",
+    "poststart": "npm run cleanup",
+    "build": "parcel build --public-url /$(basename $(pwd))/ src/index.html",
+    "deploy": "gh-pages -d dist ; npm run cleanup",
+    "cleanup": "rm -rf dist && gh-pages-clean",
+    "setup": "rm -rf .git && > README.md && git init && npm install && git add . && git commit -m 'Initial commit'"
   },
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint && npm run pretty",
-      "pre-push": "if git-branch-is master ; then npm run build && npm run deploy ; else exit 0 ; fi"
+      "pre-push": "if git-branch-is master; then npm run build && npm run deploy ; else exit 1 ; fi"
     }
   },
   "author": "Alex McDermott",
@@ -28,7 +27,6 @@
     "markdownlint-cli": "^0.14.1",
     "parcel-bundler": "^1.12.3",
     "prettier": "^1.15.3",
-    "rimraf": "^2.6.3",
     "tslint": "^5.12.1",
     "tslint-config-prettier": "^1.17.0",
     "typescript": "^3.2.2"
