@@ -8,14 +8,14 @@
     "start": "trap 'exit 0' SIGINT ; parcel src/index.html --open",
     "poststart": "npm run cleanup",
     "build": "parcel build --public-url /$(basename $(pwd))/ src/index.html",
-    "deploy": "gh-pages -d dist ; npm run cleanup",
+    "deploy": "gh-pages -d dist -m \"Built from $(git rev-parse --short HEAD) on master\" ; npm run cleanup",
     "cleanup": "rm -rf dist && gh-pages-clean",
-    "setup": "rm -rf .git && > README.md && git init && npm install && git add . && git commit -m 'Initial commit'"
+    "setup": "rm -rf .git && > README.md && git init && npm install"
   },
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint && npm run pretty",
-      "pre-push": "if git-branch-is master; then npm run build && npm run deploy ; else exit 1 ; fi"
+      "post-commit": "git push && if git-branch-is master ; then npm run build && npm run deploy ; fi"
     }
   },
   "author": "Alex McDermott",
