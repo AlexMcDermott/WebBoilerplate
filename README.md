@@ -21,3 +21,8 @@ Boilerplate for TypeScript canvas projects.
 
 - Uses [gh-pages](https://github.com/tschaub/gh-pages) to automatically deploy dist folder to gh-pages branch
 - Uses [git-branch-is](https://github.com/kevinoid/git-branch-is) to only deploy when pushing to the master branch
+
+## Canvas
+
+- Includes [P5.js](https://github.com/processing/p5.js) as a Javascript canvas library
+- Uses [@types/p5](https://github.com/p5-types/DefinitelyTyped) from [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped) for TypeScript integration
