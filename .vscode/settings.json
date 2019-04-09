@@ -4,7 +4,6 @@
     "**/node_modules": true
   },
   "editor.formatOnSave": true,
-  "tslint.autoFixOnSave": true,
   "json.format.enable": false,
   "javascript.format.enable": false,
   "typescript.format.enable": false,
