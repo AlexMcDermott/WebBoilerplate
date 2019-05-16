@@ -1,6 +1,6 @@
 # TypeScript Boilerplate
 
-Boilerplate for TypeScript canvas projects.
+Boilerplate for TypeScript canvas/WebGL projects.
 
 ## Linting
 
@@ -26,3 +26,7 @@ Boilerplate for TypeScript canvas projects.
 
 - Includes [P5.js](https://github.com/processing/p5.js) as a Javascript canvas library
 - Uses [@types/p5](https://github.com/p5-types/DefinitelyTyped) from [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped) for TypeScript integration
+
+## WebGL
+
+- Includes [twgl.js](https://github.com/greggman/twgl.js) as a WebGL wrapper
