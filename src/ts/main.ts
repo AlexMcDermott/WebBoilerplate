@@ -48,4 +48,11 @@
 
 //   requestAnimationFrame(render);
 // }
+
 // requestAnimationFrame(render);
+
+// window.addEventListener('resize', () => {
+//   cnv.width = window.innerWidth;
+//   cnv.height = window.innerHeight;
+//   requestAnimationFrame(render);
+// });
