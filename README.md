@@ -25,8 +25,9 @@ Boilerplate for TypeScript canvas/WebGL projects.
 ## Canvas
 
 - Includes [P5.js](https://github.com/processing/p5.js) as a Javascript canvas library
-- Uses [@types/p5](https://github.com/p5-types/DefinitelyTyped) from [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped) for TypeScript integration
+- Includes [dat.gui](https://github.com/dataarts/dat.gui) for user interface and live updating of parameters
 
 ## WebGL
 
 - Includes [twgl.js](https://github.com/greggman/twgl.js) as a WebGL wrapper
+- Comes with [gl-matrix](https://github.com/toji/gl-matrix) for vector operations in JavaScript

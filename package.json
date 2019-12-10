@@ -21,6 +21,8 @@
   "author": "Alex McDermott",
   "license": "ISC",
   "devDependencies": {
+    "@types/dat.gui": "^0.7.5",
+    "@types/gl-matrix": "^2.4.5",
     "@types/p5": "^0.7.3",
     "gh-pages": "^2.1.1",
     "git-branch-is": "^2.1.0",
