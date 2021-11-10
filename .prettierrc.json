@@ -4,8 +4,10 @@
   "useTabs": false,
   "semi": true,
   "singleQuote": true,
+  "quoteProps": "consistent",
   "trailingComma": "es5",
   "bracketSpacing": true,
+  "bracketSameLine": true,
   "arrowParens": "avoid",
   "endOfLine": "lf"
 }
