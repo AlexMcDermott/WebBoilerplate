@@ -2,7 +2,7 @@
   "source": "src/index.html",
   "scripts": {
     "prepare": "husky install",
-    "dev": "parcel --open",
+    "start": "parcel --open",
     "build": "rimraf dist && parcel build"
   },
   "devDependencies": {
