@@ -1,26 +1,32 @@
 {
-  "source": "src/index.html",
+  "type": "module",
   "scripts": {
     "prepare": "husky install",
-    "start": "parcel --open",
-    "build": "rimraf dist && parcel build"
+    "start": "webpack serve",
+    "build": "rimraf dist && webpack"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.3.0",
     "@typescript-eslint/parser": "^5.3.0",
+    "css-loader": "^6.5.1",
     "eslint": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",
+    "html-webpack-plugin": "^5.5.0",
     "husky": "^7.0.4",
     "lint-staged": "^11.2.6",
     "markdownlint-cli": "^0.30.0",
-    "parcel": "^2.0.0",
+    "mini-css-extract-plugin": "^2.4.5",
     "prettier": "2.4.1",
     "rimraf": "^3.0.2",
-    "typescript": "^4.4.4"
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.5.3",
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.6.0"
   },
   "lint-staged": {
     "*.md": "markdownlint --fix",
-    "*.ts": "eslint --fix --ignore-path .gitignore",
-    "*.{ts,html,css,json,yml,md}": "prettier --write --ignore-path .gitignore"
+    "*.{js,ts}": "eslint --fix --ignore-path .gitignore",
+    "*.{js,ts,html,css,json,yml,md}": "prettier --write --ignore-path .gitignore"
   }
 }

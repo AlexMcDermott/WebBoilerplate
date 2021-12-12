@@ -1,15 +1,15 @@
 # Web Boilerplate
 
-Simple boilerplate for creating basic web projects with handly tools
+Simple boilerplate for creating basic web projects with handy tools
 
 ## Features
 
-- Building, bundling TypeScript support with [Parcel]
+- Bundling with [Webpack]
 - Formatting with [Prettier]
 - [Lint-staged] for pre-commit checks
 - [ESLint] for JavaScript and TypeScript linting
 - [Markdownlint-cli] for Markdown linting
-- [EditorConfig] for consitent editor settings
+- [EditorConfig] for consistent editor settings
 
 ## Quickstart
 
@@ -18,7 +18,7 @@ npm install
 npm start
 ```
 
-[parcel]: https://github.com/parcel-bundler/parcel
+[webpack]: https://github.com/webpack/webpack
 [prettier]: https://github.com/prettier/prettier
 [lint-staged]: https://github.com/okonet/lint-staged
 [eslint]: https://github.com/eslint/eslint
