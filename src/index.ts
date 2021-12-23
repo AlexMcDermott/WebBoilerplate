@@ -1,3 +1,4 @@
 import './styles.css';
+import * as rust from '../pkg/index.js';
 
-console.log('Hello there');
+rust.say_hello();

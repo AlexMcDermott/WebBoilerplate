@@ -1,10 +1,12 @@
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import WasmPackPlugin from '@wasm-tool/wasm-pack-plugin';
 
 export default {
   mode: 'development',
   devtool: 'inline-source-map',
+  experiments: { asyncWebAssembly: true },
   entry: './src/index.ts',
   module: {
     rules: [
@@ -30,6 +32,9 @@ export default {
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
+    }),
+    new WasmPackPlugin({
+      crateDirectory: path.resolve(),
     }),
   ],
 };
