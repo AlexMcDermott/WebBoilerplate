@@ -10,15 +10,18 @@ export class Cell {
   private y: number;
   private size: number;
   private type: CellType;
+  public needsRedraw: boolean;
 
   constructor(x: number, y: number, size: number, type: CellType) {
     this.x = x;
     this.y = y;
     this.size = size;
     this.type = type;
+    this.needsRedraw = true;
   }
 
   public draw(gph: PIXI.Graphics): void {
+    if (!this.needsRedraw) return;
     switch (this.type) {
       case CellType.Air: {
         gph.beginFill(0xd1d1d1);
@@ -33,10 +36,12 @@ export class Cell {
         break;
       }
     }
+    this.needsRedraw = false;
     gph.drawRect(this.x, this.y, this.size, this.size);
   }
 
   public set(type: CellType) {
     this.type = type;
+    this.needsRedraw = true;
   }
 }

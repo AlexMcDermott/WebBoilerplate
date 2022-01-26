@@ -2,6 +2,7 @@ import * as PIXI from 'pixi.js';
 
 import './styles.css';
 import * as rust from '../pkg';
+
 import Grid from './grid';
 import { CellType } from './cell';
 
@@ -27,6 +28,9 @@ app.stage.on('pointerdown', (e: PIXI.InteractionEvent) => {
   const x = Math.floor(e.data.global.x / gridScale);
   const y = Math.floor(e.data.global.y / gridScale);
   grid.set(x, y, CellType.Sand);
+});
+
+app.ticker.add(() => {
   grid.draw(gph);
   app.render();
 });
