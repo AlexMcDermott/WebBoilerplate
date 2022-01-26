@@ -25,9 +25,6 @@ export default {
     filename: '[name].[contenthash].js',
     path: path.resolve(path.resolve(), 'dist'),
   },
-  resolve: {
-    extensions: ['.ts', '...'],
-  },
   plugins: [
     new HtmlWebpackPlugin({
       inject: 'body',

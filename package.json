@@ -29,8 +29,5 @@
     "*.md": "markdownlint --fix",
     "*.{js,ts}": "eslint --fix --ignore-path .gitignore",
     "*.{js,ts,html,css,json,yml,md}": "prettier --write --ignore-path .gitignore"
-  },
-  "dependencies": {
-    "pixi.js": "^6.2.1"
   }
 }
